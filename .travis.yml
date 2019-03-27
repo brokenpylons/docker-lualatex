@@ -3,6 +3,10 @@ language: generic
 env:
     - NAME=lualatex
 
+branches:
+    only:
+        - master
+
 script:
     - docker build -t "$NAME" .
     - docker images
