@@ -3,7 +3,7 @@ language: generic
 env:
     - NAME=lualatex
 
-if: tag IS present
+if: branch = master
 
 script:
     - docker build -t "$NAME" .
