@@ -1,0 +1,20 @@
+language: generic
+
+env:
+    - NAME=lualatex
+
+script:
+    - docker build -t "$NAME" .
+    - docker images
+
+before_deploy:
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+    - docker tag "$NAME" "$DOCKER_USERNAME/$NAME:$TRAVIS_TAG" 
+    - docker tag "$NAME" "$DOCKER_USERNAME/$NAME:latest"
+    - docker images
+
+deploy:
+    provider: script
+    script: docker push "$DOCKER_USERNAME/$NAME:$TRAVIS_TAG" && docker push "$DOCKER_USERNAME/$NAME:latest"
+    on:
+        tags: true
