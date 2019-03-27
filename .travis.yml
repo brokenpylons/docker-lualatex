@@ -6,6 +6,7 @@ env:
 branches:
     only:
         - master
+        - /^v.*$/
 
 script:
     - docker build -t "$NAME" .
