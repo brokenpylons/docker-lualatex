@@ -3,10 +3,7 @@ language: generic
 env:
     - NAME=lualatex
 
-branches:
-    only:
-        - master
-        - /^v.*$/
+if: tag IS present
 
 script:
     - docker build -t "$NAME" .
