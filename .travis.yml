@@ -1,8 +1,5 @@
 language: generic
 
-env:
-    - NAME=lualatex
-
 if: branch = master OR tag IS present
 
 script:
