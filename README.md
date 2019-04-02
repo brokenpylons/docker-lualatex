@@ -8,5 +8,6 @@ Minimal-ish base image for running lualatex
 [dockerhub](https://hub.docker.com/r/brokenpylons/lualatex)
 
 ## See also:
+* [docker-lualatex-build](https://github.com/brokenpylons/docker-lualatex-build)
 * [A short postmortem on moving to Docker for LaTeX continuous integration](https://ljvmiranda921.github.io/notebook/2018/04/23/postmortem-shift-to-docker/)
 * [blang/latex-docker](https://github.com/blang/latex-docker)
