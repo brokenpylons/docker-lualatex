@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/brokenpylons/docker-lualatex.svg?branch=master)](https://travis-ci.org/brokenpylons/docker-lualatex)
 ![Docker Pulls](https://img.shields.io/docker/pulls/brokenpylons/lualatex.svg)
 
-Minimal-ish base image for running lualatex
+Minimal-ish base image for running lualatex.
 
 [dockerhub](https://hub.docker.com/r/brokenpylons/lualatex)
 
