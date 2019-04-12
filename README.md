@@ -11,14 +11,14 @@ Based on:
 Included:
 
 - texlive-base
-- texlive-latex-recommended
+- texlive-latex-base
 - texlive-luatex
 
 [dockerhub](https://hub.docker.com/r/brokenpylons/lualatex)
 
 ## Why?
 
-All other images on dockerhub are bloated. This image installs only the minimal selection of packages needed to run lualatex and nothing more. The size on dockerhub is 116MB (316MB when installed).
+All other images on dockerhub are bloated. This image installs only the minimal selection of packages needed to run lualatex and nothing more. The size on dockerhub is 108MB (296MB when installed). You can install additional packages using ```tlmgr```.
 
 ## Usage
 
