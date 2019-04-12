@@ -8,7 +8,9 @@ RUN apt-get update && \
         texlive-luatex && \
     rm -rf /var/lib/apt/lists/*
 
-ENV TEXMFCACHE /tmp/texmf/
+ENV TEXMFHOME=/tmp/texmf/ \
+    TEXMFCACHE=/tmp/texmf-var/ \
+    TEXMFCONFIG=/tmp/texmf-config/
 
 WORKDIR /data
 VOLUME ["/data"]
