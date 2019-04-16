@@ -1,20 +1,40 @@
-FROM debian:stretch-slim
-ARG DEBIAN_FRONTEND=noninteractive
+FROM debian:stretch-slim as builder
+ARG DEBIAN_FRONTEND=noninteractive 
 
 RUN apt-get update && \
     apt-get --no-install-recommends install -y \
-        texlive-base \
-        texlive-latex-base \
-        texlive-luatex \
-        wget \
-        xzdec && \
+        perl-modules \
+        liburi-encode-perl \
+        gnupg \
+        wget && \
     rm -rf /var/lib/apt/lists/*
 
-ENV TEXMFHOME=/usr/local/share/texmf/ \
-    TEXMFVAR=/var/tmp/texmf-var/ \
-    TEXMFCONFIG=/var/tmp/texmf-config/
+WORKDIR /build
 
-RUN tlmgr init-usertree 
+COPY texlive.profile .
+
+RUN wget -qO- http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz | tar -xzf- --strip-components=1 && \
+    ./install-tl -profile texlive.profile
+
+FROM debian:stretch-slim
+ARG DEBIAN_FRONTEND=noninteractive
+
+COPY --from=builder /usr/local/texlive /usr/local/texlive
+
+RUN apt-get update && \
+    apt-get --no-install-recommends install -y \
+        perl-modules \
+        liburi-encode-perl \
+        gnupg \
+        wget && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV HOME=/tmp PATH="/usr/local/texlive/bin/x86_64-linux:$PATH"
+
+RUN tlmgr install \
+        collection-latex \
+        collection-luatex && \
+    rm -rf /usr/local/texlive/texmf-var/*
 
 WORKDIR /data
 VOLUME ["/data"]
