@@ -18,7 +18,7 @@ Included:
 
 ## Why?
 
-All other images on dockerhub are bloated. This image installs only the minimal selection of packages needed to run lualatex and nothing more. The size on dockerhub is 108MB (296MB when installed). You can install additional packages using ```tlmgr```.
+All other images on dockerhub are bloated. This image installs only the minimal selection of packages needed to run lualatex and nothing more. The size on dockerhub is 70 MB (218MB when installed). You can install additional packages using ```tlmgr```.
 
 ## Usage
 
