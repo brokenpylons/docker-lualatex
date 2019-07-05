@@ -33,7 +33,8 @@ ENV HOME=/tmp PATH="/usr/local/texlive/bin/x86_64-linux:$PATH"
 
 RUN tlmgr install \
         collection-latex \
-        collection-luatex && \
+        collection-luatex \
+        fontspec && \
     rm -rf /usr/local/texlive/texmf-var/*
 
 WORKDIR /data
